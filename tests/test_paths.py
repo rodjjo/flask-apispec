@@ -59,7 +59,7 @@ class TestPathParams:
  
     def test_params_override_header(self, app):
         rule = make_rule(app, '/some_path/')
-        overrides = {'Authorization': {'description': 'The authorization token', 'in': 'header', 'required': True}}
+        overrides = {'Authorization': {'type': 'string', 'description': 'The authorization token', 'in': 'header', 'required': True}}
         params = rule_to_params(rule, overrides=overrides)
         expected = make_param(type='string', name='Authorization', in_location='header', description='The authorization token',
                               required=True)
