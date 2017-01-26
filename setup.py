@@ -40,7 +40,7 @@ setup(
     long_description=read('README.rst'),
     author='Joshua Carp',
     author_email='jm.carp@gmail.com',
-    url='https://github.com/jmcarp/flask-apispec',
+    url='https://github.com/rodjjo/flask-apispec',
     packages=find_packages(exclude=('test*', )),
     package_dir={'flask_apispec': 'flask_apispec'},
     include_package_data=True,
