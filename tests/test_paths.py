@@ -8,8 +8,8 @@ def make_rule(app, path, **kwargs):
         pass
     return app.url_map._rules_by_endpoint['view'][0]
 
-def make_param(**kwargs):
-    ret = {'in': 'path', 'required': True}
+def make_param(in_location='path', **kwargs):
+    ret = {'in': in_location, 'required': True}
     ret.update(kwargs)
     return ret
 
@@ -61,5 +61,5 @@ class TestPathParams:
         rule = make_rule(app, '/some_path/')
         overrides = {'Authorization': {'description': 'The authorization token', "in": "header"}}
         params = rule_to_params(rule, overrides=overrides)
-        expected = make_param(type='string', name='Authorization', description='The authorization token')
+        expected = make_param(type='string', name='Authorization', in_location="header", description='The authorization token')
         assert params[0] == expected
