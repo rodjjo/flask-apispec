@@ -56,3 +56,10 @@ class TestPathParams:
         params = rule_to_params(rule, overrides=overrides)
         expected = make_param(type='string', name='band_id', description='the band id')
         assert params[0] == expected
+ 
+    def test_params_override_header(self, app):
+        rule = make_rule(app, '/some_path/')
+        overrides = {'Authorization': {'description': 'The authorization token', "in": "header"}}
+        params = rule_to_params(rule, overrides=overrides)
+        expected = make_param(type='string', name='Authorization', description='The authorization token')
+        assert params[0] == expected
